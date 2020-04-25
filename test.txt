@@ -1,2 +1,5 @@
 This is a test of the github integration for Atom. First edit with plain text.
 ##Now I added a commentary
+
+Now testing multiple changes
+first change 
