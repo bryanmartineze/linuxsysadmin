@@ -1,0 +1,40 @@
+#prerequisite software
+sudo yum install httpd php
+sudo yum install gcc glibc glibc-common
+sudo yum install gd gd-devel
+
+#create account information
+sudo adduser -m nagios
+sudo passwd svrnagi0$ #pass is not always the same
+
+#create neccesary group
+sudo groupadd nagcmd
+sudo usermod -a -G nagcmd nagios
+sudo usermod -a -G nagcmd apache
+
+#download nagios
+mkdir ~/downloads && cd ~/downloads
+wget #INSERT NAGIOS DOWNLOAD LINK
+tar zxvf nagios-4.0.8.tar.gz
+cd nagios-4.0.8
+
+#compile nagios
+./configure --with-command-group=nagcmd
+make all
+
+#install all needed components
+sudo make install
+sudo make install-init
+sudo make install-config
+sudo make install-commandmode
+
+#change email for notification report
+sudo vim /usr/local/nagios/etc/objects/contacts.cfg
+
+#configure web interface
+sudo make install-webconf
+sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin  #password 
+sudo service httpd restart   
+
+#install nagios plugins
+wget #INSERT NAGIOS PLUGINS DOWNLOAD LINK HERE
