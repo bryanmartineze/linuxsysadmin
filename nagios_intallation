@@ -38,3 +38,18 @@ sudo service httpd restart
 
 #install nagios plugins
 wget #INSERT NAGIOS PLUGINS DOWNLOAD LINK HERE
+
+#COMPILE NAGIOS PLUGINS
+cd nagios-plugins-2.3.3
+./configure --with-nagios-user=nagios --with-nagios-group=nagios
+make
+sudo make install
+
+#START NAGIOS
+sudo chkconfig --add nagios
+sudo chkconfig nagios on
+
+sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+
+#If there are no errors, start Nagios.
+sudo service nagios start
