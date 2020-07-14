@@ -38,6 +38,7 @@ sudo service httpd restart
 
 #install nagios plugins
 wget #INSERT NAGIOS PLUGINS DOWNLOAD LINK HERE
+sudo tar zxvf nagios-plugins-2.3.3
 
 #COMPILE NAGIOS PLUGINS
 cd nagios-plugins-2.3.3
