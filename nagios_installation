@@ -15,7 +15,7 @@ sudo usermod -a -G nagcmd apache
 #download nagios
 mkdir ~/downloads && cd ~/downloads
 wget #INSERT NAGIOS DOWNLOAD LINK
-tar zxvf nagios-4.0.8.tar.gz
+sudo tar zxvf nagios-4.0.8.tar.gz
 cd nagios-4.0.8
 
 #compile nagios
@@ -41,8 +41,8 @@ wget #INSERT NAGIOS PLUGINS DOWNLOAD LINK HERE
 
 #COMPILE NAGIOS PLUGINS
 cd nagios-plugins-2.3.3
-./configure --with-nagios-user=nagios --with-nagios-group=nagios
-make
+sudo ./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
+sudo make all
 sudo make install
 
 #START NAGIOS
