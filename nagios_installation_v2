@@ -2,7 +2,7 @@
 sudo yum update -y
 
 #install library
-sudo amazon-linux-extras install epel 
+sudo amazon-linux-extras install epel -y
 
 #create account information
 sudo adduser -m nagios
