@@ -1,0 +1,23 @@
+#update yum
+sudo yum update -y
+
+#Install Nagios, nrpe, and Nagios-Plugins
+sudo yum install nagios nrpe nagios-plugins-all -y
+
+#auto-start Nagios service after a Server restart process
+sudo systemctl enable nagios
+
+#install httpd
+sudo yum install httpd -y
+
+#start httpd
+sudo service httpd start
+
+#auto-start httpd service after a Server restart process
+sudo systemctl enable httpd.service
+
+#Install php
+sudo yum install php -y
+
+#Edit your email address to receive email alerts
+sudo nano /etc/nagios/objects/contacts.cfg
