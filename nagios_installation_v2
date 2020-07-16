@@ -1,6 +1,18 @@
 #update yum
 sudo yum update -y
 
+#install library
+sudo amazon-linux-extras install epel 
+
+#create account information
+sudo adduser -m nagios
+sudo passwd svrnagi0$ #pass is not always the same
+
+#create neccesary group
+sudo groupadd nagcmd
+sudo usermod -a -G nagcmd nagios
+sudo usermod -a -G nagcmd apache
+
 #Install Nagios, nrpe, and Nagios-Plugins
 sudo yum install nagios nrpe nagios-plugins-all -y
 
@@ -9,6 +21,7 @@ sudo systemctl enable nagios
 
 #install httpd
 sudo yum install httpd -y
+sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin  #password 
 
 #start httpd
 sudo service httpd start
@@ -23,7 +36,7 @@ sudo yum install php -y
 sudo nano /etc/nagios/objects/contacts.cfg
 
 #check your nagios configuration, if everything is ok you can proceed
-sudo /usr/sbin/nagios -v /etc/nagios/nagios.cfg 
+sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
 #should say something like "Things look okay - No serious problems were detected during the pre-flight check"
 
 #check if nagios service is active and renable auto initialization after restart
