@@ -21,3 +21,13 @@ sudo yum install php -y
 
 #Edit your email address to receive email alerts
 sudo nano /etc/nagios/objects/contacts.cfg
+
+#check your nagios configuration, if everything is ok you can proceed
+sudo /usr/sbin/nagios -v /etc/nagios/nagios.cfg 
+#should say something like "Things look okay - No serious problems were detected during the pre-flight check"
+
+#check if nagios service is active and renable auto initialization after restart
+sudo service nagios status
+sudo service nagios start
+sudo service nagios status
+sudo systemctl enable nagios
