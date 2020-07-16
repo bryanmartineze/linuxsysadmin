@@ -6,7 +6,7 @@ sudo amazon-linux-extras install epel -y
 
 #create account information
 sudo adduser -m nagios
-sudo passwd svrnagi0$ #pass is not always the same
+sudo passwd nagios #pass is not always the same
 
 #create neccesary group
 sudo groupadd nagcmd
