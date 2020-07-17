@@ -1,0 +1,18 @@
+#This installation is meant to be in Ubuntu 18.04
+
+#update apt
+sudp apt update
+
+#check python version
+python3 -V
+
+#Install virtual enviroment
+sudo apt install python3-venv -y
+
+#create a directory for a flask application
+mkdir flask_docker && cd flask_docker
+
+#create the virtual enviroment
+python3 -m venv venv
+
+#start the virtual enviroment
