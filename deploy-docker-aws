@@ -5,16 +5,19 @@ sudo apt-get install \
     ca-certificates \
     curl \
     gnupg-agent \
-    software-properties-common
+    software-properties-common \
+    -y
 
+#download docker software
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
+#installing docker
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 apt-cache madison docker-ce
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 
-sudo apt install docker.io
+sudo apt install docker.io -y
 
-sudo apt install docker-compose
+sudo apt install docker-compose -y
