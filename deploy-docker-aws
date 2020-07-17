@@ -23,13 +23,11 @@ sudo add-apt-repository \
    $(lsb_release -cs) \
    stable"
 
+#use this command to review an specific version con docker
+apt-cache madison docker-ce
+
 #install docker
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
-apt-cache madison docker-ce
-
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-
-sudo apt install docker.io -y
-
-sudo apt install docker-compose -y
+#verify that docker is installed
+sudo docker run hello-world
