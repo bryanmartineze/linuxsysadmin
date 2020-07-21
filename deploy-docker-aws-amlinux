@@ -1,0 +1,14 @@
+#install docker
+sudo su
+yum install docker -y
+
+#initializa docker
+service docker start
+docker pull nginx
+
+#pull nginx docker image
+docker pull nginx
+docker images
+
+#run nginx container and create a host communication
+docker run -p 80:80 nginx
