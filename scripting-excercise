@@ -10,3 +10,15 @@ rocket-start-sequence lunar-mission
 rocket-start-engine lunar-mission
 rocket-lift-off lunar-mission
 rocket-status lunar-mission
+
+#execute your script
+bash create-and-launch-rocket
+
+#create a shell script called create-directory-structure.sh
+mkdir countires
+cd countries
+mkdir USA India UK
+echo "Washington, DC" >> USA/capital.txt 
+echo "London" >> UK/capital.txt
+echo "New Delhi" >> Indita/capital.txt
+uptime
