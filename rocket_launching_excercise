@@ -27,3 +27,19 @@ rocket-lift-off lunar-mission
 #check the launche status
 rocket-status lunar-mission
 
+#now realize the excercise with a mars mission
+mkdir mars-mission
+
+rocket-add mars-mission
+
+rocket-start-power mars-mission
+
+rocket-internal-power mars-mission
+
+rocket-start-sequence mars-mission
+
+rocket-start-engine mars-mission
+
+rocket-lift-off mars-mission
+
+rocket-status
