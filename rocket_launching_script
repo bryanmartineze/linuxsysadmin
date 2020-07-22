@@ -1,0 +1,29 @@
+#this is part of a kode kloud academy project
+
+#list all rockets
+rocket-ls
+
+#Every mission requires a new directory created by the mission name. Create a new directory at /home/bob named lunar-mission
+mkdir ~/lunar-mission
+
+#Now let's create a rocket
+rocket-add lunar-mission
+
+#start rocket's auxiliary power
+rocket-start-power lunar-mission 
+
+#switch to internal's rocket power
+rocket-internal-power lunar-mission
+
+#initiate auto sequence
+rocket-start-sequence lunar-mission
+
+#start the main engine
+rocket-start-engine lunar-mission
+
+#initiate lift off
+rocket-lift-off lunar-mission
+
+#check the launche status
+rocket-status lunar-mission
+
