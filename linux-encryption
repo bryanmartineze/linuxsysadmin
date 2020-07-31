@@ -1,0 +1,50 @@
+#put something into a txt file
+echo "cats are amazing" > hiddenmessage.txt
+
+#encrypt the message using gpg
+gpg -c hiddenmessage.txt 
+ls
+
+#File is now encrypted, check it
+cat hiddenmessage.txt.gpg
+
+#reload agent
+echo RELOADAGENT | gpg-connect-agent
+
+ls -la
+
+#decrypt msg and check info
+gpg -o output.txt hiddenmessage.txt.gpg 
+cat output.txt 
+
+#erase files
+rm  hiddenmessage.txt.gpg
+rm output.txt 
+
+#create a public key
+gpg --gen-key
+
+#export you publickey for the user Bryan
+gpg --armor --output pubkey.txt --export 'Bryan'
+
+#check your publickey
+cat pubkey.txt 
+
+#export a privatekey for Bryan
+gpg --armor --output privkey.asc --export-secret-keys 'Bryan'
+
+#check your private key
+cat privkey.asc
+
+#encrypt your hiddenmessage.txt
+gpg --encrypt --recipient 'Bryan' hiddenmessage.txt 
+
+#check your encrypted file
+cat hiddenmessage.txt
+
+#decrypt your hidden message
+gpg --output decrypted.txt --decrypt hiddenmessage.txt.gpg
+
+#check your file, should be decrypted and is written inside with the original message
+cat decrypted.txt 
+
