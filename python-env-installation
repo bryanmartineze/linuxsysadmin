@@ -1,0 +1,12 @@
+sudo su -
+yum update
+yum groupinstall -y "development tools"
+yum install -y \
+  lsof \
+  wget \
+  vim-enhanced \
+  words \
+  which
+exit
+git config --global user.name "Bryan Martínez"
+git config --global user.email "bryanmartineze@gmail.com"
