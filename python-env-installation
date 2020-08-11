@@ -10,3 +10,31 @@ yum install -y \
 exit
 git config --global user.name "Bryan Martínez"
 git config --global user.email "bryanmartineze@gmail.com"
+
+
+$ sudo su -
+[root] $ yum groupinstall -y "development tools"
+[root] $ yum install -y \
+  libffi-devel \
+  zlib-devel \
+  bzip2-devel \
+  openssl-devel \
+  ncurses-devel \
+  sqlite-devel \
+  readline-devel \
+  tk-devel \
+  gdbm-devel \
+  db4-devel \ #might install extra rpm packages for this
+  libpcap-devel \ #might install extra rpm packages for this
+  xz-devel \
+  expat-devel
+  
+  [root ] $ cd /usr/src
+[root ] $ wget http://python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz
+[root ] $ tar xf Python-3.6.4.tar.xz
+[root ] $ cd Python-3.6.4
+[root ] $ ./configure --enable-optimizations
+[root ] $ make altinstall
+
+/usr/bin/python3 -V
+sudo pip3.6 install --upgrade pip
