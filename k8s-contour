@@ -1,0 +1,36 @@
+##CHECK DEPLOYMENTS AND APP CONFIG FILE##
+kubectl get deployments
+kubectl get pods
+
+#rview the yaml config file
+cat countour-files/contour-deployment-rbac.yaml
+
+#apply the config of contour
+kubectl apply -f contour-files/contour-deployment-rbac.yaml
+
+#check the status of the deployment of contour
+kubectl get pods -n heptio-contour
+
+#check the status of the replicas
+kubectl get pods -n heptio-contour
+
+#Review the events
+kubectl get events -n heptio-contour --sort-by='{.lastTimestamp}
+
+## DEPLOY KUARD TEST APLICATION ##
+#Revie the YAML File
+cat contour-files/contour-kuard-example.yaml
+
+#deploy kuard app
+kubectl apply -f contour-files/contour-kuard-example.yaml 
+
+#check the status of kuard
+kubectl get pod
+
+#check the status of translated ports
+kubectl get -n heptio-contour service contour -o wide
+
+#open a chrome tab to test kuard
+http://k8s-worker-01a.corp.local:<translated port> #note is http
+
+## REMOVING THE APPLICATION AND CONTOUR ##
