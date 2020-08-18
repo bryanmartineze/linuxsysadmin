@@ -34,3 +34,14 @@ kubectl get -n heptio-contour service contour -o wide
 http://k8s-worker-01a.corp.local:<translated port> #note is http
 
 ## REMOVING THE APPLICATION AND CONTOUR ##
+#Delete the kuard application
+kubectl delete -f contour-files/contour-kuard-example.yaml
+
+#check if kuards still exists
+kubectl get pods
+
+#delete the contour deployment
+kubectl delete -f contour-files/contour-deployment-rbac.yaml
+
+#check if contour still exists
+kubectl get pods -n contour-heptio
