@@ -1,3 +1,5 @@
+## ADDING A WORKER NODE TO YOUR CLUSTER ##
+
 #check general status of cluster
 kubectl get nodes
 
@@ -9,3 +11,28 @@ kubeadm join 192.168.120.11:6443 --token cil09b.qiu6je65v6e15orl     --discovery
 
 #check again the status of your kubernetes cluster
 kubectl get nodes
+
+## Cordoning the new Worker NOde ##
+
+#check again the status of your kubernetes cluster
+kubectl get nodes
+
+#cordon your new worker
+kubectl cordon k8s-worker-02a.corp.local
+
+#drain your new worker
+kubectl drain k8s-worker-02a.corp.local --ignore-daemonsets
+
+## SHRINKING K8S CLUSTER ##
+#we will delete the cordened node
+kubectl delete node k8s-worker-02a.corp.local
+
+#check the status of your workers
+kubetctl get nodes
+
+## RESETING CHANGES ON WORKER NODE REMOVED BEFORE ##
+#log into the node you removed k8s-worker-02a.corp.local and reset it
+kubeadm reset -f
+
+#worker k8s-worker-02a.corp.local  node is succesfully removed
+
