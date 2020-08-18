@@ -1,0 +1,11 @@
+#check general status of cluster
+kubectl get nodes
+
+#Join master noide and Request join token 
+kubeadm token create --print-join-command
+
+#Paste te command to the worker node we were adding to he cluster
+kubeadm join 192.168.120.11:6443 --token cil09b.qiu6je65v6e15orl     --discovery-token-ca-cert-hash sha256:9c97f9dd6fad76265d82d049fabc5d56987596aff601bc7814bc97b1ab7838ba
+
+#check again the status of your kubernetes cluster
+kubectl get nodes
