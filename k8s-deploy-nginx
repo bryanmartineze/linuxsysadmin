@@ -1,0 +1,16 @@
+## DEPLOY AND NGINX APP ##
+#open nginx-app directory
+cd nginx-app
+#apply the nginx deployment
+kubectl apply -s base.yaml
+#check that the namespace of nginx was created
+kubectl get ns
+#check is 2/2 deployment is ready
+kubectl get deployment -n nginx-example
+#check the pods of nginx-example
+kubectl get pod -n nginx-example
+#check the translated port of nginx-example
+kubectl get svc -n nginx-example
+#check in chrome the nginc url
+http://k8s-worker-01a.corp.local:<translated port>
+
