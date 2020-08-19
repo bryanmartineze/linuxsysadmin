@@ -1,0 +1,36 @@
+## Backing up Kubernetes with Velero ##
+#Installing Velero
+sudo tar -zxvf velero-v1.0.0-linux-amd64.tar.gz -C /usr/local/bin/ --strip-components=1 velero-v1.0.0-linux-amd64/velero
+#check the location of Velero
+which Velero
+#check the status of nodes
+kubectl get nodes
+#check the status of the namespaces
+kubectl get namespaces
+
+#running a minio service storage container
+sudo mkdir /mnt/minio-data
+
+#run minio server in a container
+sudo docker run --name minio -d -p 9000:9000 -e "MINIO_ACCESS_KEY=minio" -e "MINIO_SECRET_KEY=minio123" -v /mnt/minio-data/:/data harbor-01a.corp.local:80/minio/minio server /data
+
+#check the container is running
+sudo docker ps
+
+#access to minio web client in chrome
+http://vm-cli.corp.local:9000/minio/
+
+#create a bucket called velero 
+Click the PLUS sign in the bottom left and then in the yellow icon to create a bucket (not shown). Type velero as the name of the bucket and hit <ENTER>. 
+
+#creating the velero server for Backups
+velero install --provider aws --bucket velero --secret-file ./credentials-velero --use-volume-snapshots=false --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://vm-cli.corp.local:9000 --image harbor-01a.corp.local:80/heptio-images/velero:latest
+
+#check the namspace velero, should exists
+kubectl get ns
+
+#check the deployment of velero
+kubectl get deployments -n velero
+
+#Check the velero pod id
+kubectl get pod -n velero
