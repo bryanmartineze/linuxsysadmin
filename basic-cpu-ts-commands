@@ -1,0 +1,23 @@
+sudo -i
+yum install -y sysstat
+
+CHECK MEMORY
+free -h
+CHECK SPACE
+df -h
+CHECK CPU PERFORMANCE
+vmstat 1 4
+CHECK CPU AND DISK PERFORMANCE
+iostat -y 1 3
+iostat -cy 1 3
+CHECK TOP PROCESSES
+top
+
+GREP THE PROCESS
+ps -ef | egrep "process"
+
+gracefully terminate
+kill -15 PID
+
+forcefully terminate
+kill -9 PID
