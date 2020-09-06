@@ -21,3 +21,26 @@ kill -15 PID
 
 forcefully terminate
 kill -9 PID
+
+check any performance problem
+top
+vmstat 1 4
+
+check disk performance
+iostat -y 1 3
+iostat -dy -p xvdg 1 3
+
+list available blocks within the vm 
+lsblk
+
+check the opened process in volumes
+lsof | grep “mount point or device major,minor number”
+
+Check the PID of the process
+ps -ef | grep (PID of dalinar.sh)
+
+check the tree of the process
+pstree -p (PID of dalinar.sh)
+
+kill gracefully the problem of the script
+kill -15 (PID of dalinar.sh)
